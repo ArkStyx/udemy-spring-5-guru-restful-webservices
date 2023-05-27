@@ -6,6 +6,7 @@ import guru.springframework.api.domain.User;
 
 public interface ApiService {
 
-    List<User> getUsers(Integer limit);
-    	
+    List<User> getUsersApiFaketoryProduction(Integer limit);
+    
+    List<User> getUsersApiFaketoryMockServer(Integer limit);	
 }

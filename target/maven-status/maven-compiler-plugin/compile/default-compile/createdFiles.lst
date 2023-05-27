@@ -1,0 +1,6 @@
+guru\springframework\api\services\ApiService.class
+guru\springframework\api\domain\common\DomainCommon.class
+guru\springframework\api\config\RestTemplateConfig.class
+guru\springframework\api\RestfulWebServiceApplication.class
+guru\springframework\api\services\ApiServiceImpl.class
+guru\springframework\api\controllers\UserController.class
