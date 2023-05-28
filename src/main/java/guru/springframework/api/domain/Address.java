@@ -1,4 +1,3 @@
-
 package guru.springframework.api.domain;
 
 import java.io.Serializable;
@@ -10,16 +9,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Login extends DomainCommon implements Serializable {
+public class Address extends DomainCommon implements Serializable {
 
 	@Getter(AccessLevel.NONE)
 	@Setter(AccessLevel.NONE)
-    private final static long serialVersionUID = 1041720428871730372L;
+    private final static long serialVersionUID = 5677338081290507077L;
 	
-    private String username;
-    private String password;
-    private String md5;
-    private String sha1;
-    private String sha256;
-
+	private String street;
+	private String suite;
+	private String city;
+	private String zipcode;
+	private Geo geo;
 }

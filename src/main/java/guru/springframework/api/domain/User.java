@@ -1,4 +1,3 @@
-
 package guru.springframework.api.domain;
 
 import java.io.Serializable;
@@ -11,20 +10,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class User extends DomainCommon implements Serializable {
-
+	
 	@Getter(AccessLevel.NONE)
 	@Setter(AccessLevel.NONE)
-    private final static long serialVersionUID = 270727596527329664L;
+    private final static long serialVersionUID = -3532048267747973846L;
 	
-    private String gender;
-    private Name name;
-    private Location location;
+    private Integer id;
+    private String name;
+    private String username;
     private String email;
-    private Login login;
+    private Address address;
     private String phone;
-    private Job job;
-    private Billing billing;
-    private String language;
-    private String currency;
-
+    private String website;
+    private Company company;
 }

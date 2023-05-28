@@ -20,21 +20,13 @@ public class ApiServiceImplTest {
     @Autowired
     private ApiService apiService;
 
-    private static final int RESULTAT_ATTENDU_APIFAKETORY_PRODUCTION = 4;
-    private static final int RESULTAT_ATTENDU_APIFAKETORY_MOCK_SERVER = 1;
+    private static final int RESULTAT_ATTENDU_JSON_PLACE_HOLDER = 3;
     
     @Test
-    public void getUsersApiFaketoryProduction() throws Exception {
-        List<User> users = apiService.getUsersApiFaketoryProduction(3);
+    public void getUsers() throws Exception {
+        List<User> users = apiService.getUsers(3);
         assertNotNull(apiService);
-        assertEquals(RESULTAT_ATTENDU_APIFAKETORY_PRODUCTION, users.size());
-    }
-    
-    @Test
-    public void getUsersApiFaketoryMockServer() throws Exception {
-        List<User> users = apiService.getUsersApiFaketoryMockServer(3);
-        assertNotNull(apiService);
-        assertEquals(RESULTAT_ATTENDU_APIFAKETORY_MOCK_SERVER, users.size());
+        assertEquals(RESULTAT_ATTENDU_JSON_PLACE_HOLDER, users.size());
     }
     
 }

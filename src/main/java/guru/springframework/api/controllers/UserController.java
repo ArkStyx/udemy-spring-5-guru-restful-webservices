@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.server.ServerWebExchange;
 
+import guru.springframework.api.domain.User;
 import guru.springframework.api.services.ApiService;
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
 
 @Slf4j
 @Controller
@@ -27,6 +29,7 @@ public class UserController {
         return "index";
     }
 
+    // TODO A VERIFIER
     @PostMapping("/users")
     public String formPost(Model model, ServerWebExchange serverWebExchange){
     	log.debug("formPost - Start");
@@ -43,25 +46,27 @@ public class UserController {
             limit = VALEUR_PAR_DEFAUT;
         }
 
-//        model.addAttribute("users", apiService.getUsersApiFaketoryProduction(limit));
-        model.addAttribute("users", apiService.getUsersApiFaketoryMockServer(limit));
+        model.addAttribute("users", apiService.getUsers(limit));
         
         log.debug("formPost - End");
         return "userlist";
     }
     
+    // TODO A VERIFIER
+    @PostMapping("/users_flux")
+    public String formPostFlux(Model model, ServerWebExchange serverWebExchange) {
+    	log.debug("formPost - Start");
+    	
+    	Flux<User> fluxUser = apiService.getUsers(serverWebExchange.getFormData().map(data -> {
+				String limitString = data.getFirst("limit");
+				return Integer.valueOf(limitString);
+			})
+		);
+    	
+        model.addAttribute("users", fluxUser);
+
+        log.debug("formPost - End");
+        return "userlist";
+    }
     
-    
-    /*
-    TODO FIXME
-    
-    Sun May 28 00:16:45 CEST 2023
-[398f6323-5] There was an unexpected error (type=Not Found, status=404).
-org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND
-	at org.springframework.web.reactive.resource.ResourceWebHandler.lambda$handle$1(ResourceWebHandler.java:406)
-	Suppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: 
-Error has been observed at the following site(s):
-	*__checkpoint ⇢ HTTP POST "/users/" [ExceptionHandlingWebHandler]
-Original Stack Trace:
-    */
 }

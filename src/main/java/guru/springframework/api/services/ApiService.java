@@ -3,10 +3,12 @@ package guru.springframework.api.services;
 import java.util.List;
 
 import guru.springframework.api.domain.User;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface ApiService {
 
-    List<User> getUsersApiFaketoryProduction(Integer limit);
-    
-    List<User> getUsersApiFaketoryMockServer(Integer limit);	
+    List<User> getUsers(Integer limit);
+
+    Flux<User> getUsers(Mono<Integer> limit);
 }

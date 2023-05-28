@@ -1,5 +1,6 @@
 package guru.springframework.api.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.AccessLevel;
@@ -8,12 +9,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserData {
-
+public class UserList  implements Serializable {
+	
 	@Getter(AccessLevel.NONE)
 	@Setter(AccessLevel.NONE)
-    private final static long serialVersionUID = 4382483581291975398L;
+    private final static long serialVersionUID = -978265773832044746L;
 	
-	private List<User> data;
-	
+	List<User> userList;
 }
